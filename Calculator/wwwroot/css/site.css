@@ -1,0 +1,50 @@
+﻿body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #111;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    width: 280px;
+    background: black;
+    border-radius: 20px;
+    overflow: hidden;
+    color: white;
+}
+
+.display {
+    font-size: 36px;
+    text-align: right;
+    padding: 20px;
+    background: #222;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+    font-size: 20px;
+    padding: 20px;
+    border: none;
+    background: #555;
+    color: white;
+    cursor: pointer;
+}
+
+button.zero {
+    grid-column: span 2;
+}
+
+button[value="add"],
+button[value="subtract"],
+button[value="multiply"],
+button[value="divide"],
+button[value="equals"] {
+    background: #d33;
+}

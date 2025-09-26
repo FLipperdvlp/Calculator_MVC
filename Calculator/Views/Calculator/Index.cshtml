@@ -1,0 +1,53 @@
+﻿@model Calculator.Models.CalculatorModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator MVC</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .calculator { width: 220px; margin: 50px auto; }
+        .display { background: #222; color: #fff; font-size: 2em; text-align: right; padding: 10px; margin-bottom: 5px; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 50px); gap: 5px; }
+        .buttons button { font-size: 1.2em; padding: 10px; }
+        .zero { grid-column: span 2; }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <div class="display">@Model.Display</div>
+    <form method="post" action="/Calculator/Press">
+        @Html.AntiForgeryToken()
+        <div class="buttons">
+            <button type="submit" name="action" value="clear">C</button>
+            <button type="submit" name="action" value="toggle">+/-</button>
+            <button type="submit" name="action" value="percent">%</button>
+            <button type="submit" name="action" value="divide">÷</button>
+
+            <button type="submit" name="value" value="7">7</button>
+            <button type="submit" name="value" value="8">8</button>
+            <button type="submit" name="value" value="9">9</button>
+            <button type="submit" name="action" value="multiply">×</button>
+
+            <button type="submit" name="value" value="4">4</button>
+            <button type="submit" name="value" value="5">5</button>
+            <button type="submit" name="value" value="6">6</button>
+            <button type="submit" name="action" value="subtract">-</button>
+
+            <button type="submit" name="value" value="1">1</button>
+            <button type="submit" name="value" value="2">2</button>
+            <button type="submit" name="value" value="3">3</button>
+            <button type="submit" name="action" value="add">+</button>
+
+            <button type="submit" class="zero" name="value" value="0">0</button>
+            <button type="submit" name="value" value=".">.</button>
+            <button type="submit" name="action" value="equals">=</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
