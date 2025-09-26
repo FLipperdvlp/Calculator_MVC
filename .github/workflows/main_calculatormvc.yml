@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP.Net Core app to Azure Web App - CalculatorMVC
+name: Build and deploy ASP.Net Core app to Azure Web App - Azura-Web
 
 on:
   push:
@@ -23,11 +20,14 @@ jobs:
         with:
           dotnet-version: '9.x'
 
+      - name: Restore dependencies
+        run: dotnet restore ./Bank_Convert_API/Bank_Convert_API.csproj
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build ./Calculator/Calculator.csproj --configuration Release --no-restore
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish ./Calculator/Calculator.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp" --no-build
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -52,4 +52,5 @@ jobs:
           app-name: 'CalculatorMVC'
           slot-name: 'Production'
           package: .
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_99C8C8243D9241B8A253F8381F4A2633 }}
