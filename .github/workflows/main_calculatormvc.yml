@@ -21,7 +21,7 @@ jobs:
           dotnet-version: '9.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./Bank_Convert_API/Bank_Convert_API.csproj
+        run: dotnet restore ./Calculator/Calculator.csproj
 
       - name: Build with dotnet
         run: dotnet build ./Calculator/Calculator.csproj --configuration Release --no-restore
@@ -54,3 +54,4 @@ jobs:
           package: .
 
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_99C8C8243D9241B8A253F8381F4A2633 }}
+
