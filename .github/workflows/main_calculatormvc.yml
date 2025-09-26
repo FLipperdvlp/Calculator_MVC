@@ -46,10 +46,10 @@ jobs:
           name: .net-app
       
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'CalculatorMVC' # замени на точное имя Web App в Azure
+          app-name: 'CalculatorMVC'
           slot-name: 'Production'
           package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CALCULATORMVC }}
+
